@@ -60,4 +60,41 @@ json_rows = df.to_json('data/test_pandas.json', orient='records')
 
 
 
+# %%
+#read the json data back
+import json
 
+with open('data/test.json', 'r') as f:
+    reader = json.load(f)
+    #print(reader)
+
+openvalues = {}
+
+#find the time of the highest Open value
+for item in reader:
+    #print(item) #{'Time': '2017-02-02 04:00:00', 'Open': '129.984', 'High': '130.48', 'Low': '128.78', 'Close': '128.785', 'Volume': '60'}
+    openvalues[float(item['Open'])] = item['Time']
+
+print('Open values available with timestamps')
+print(openvalues)
+
+openkeys = list(openvalues.keys())
+
+print('Open values available as list of keys')
+print(openkeys)
+
+print('Sort the keys desc order')
+openkeys.sort(reverse=True)
+
+print(openkeys)
+
+print('highest open value:')
+print(openkeys[0])
+print('timestamp of highest open value:')
+print(openvalues[openkeys[0]])
+
+
+with open('data/test.json', 'r') as r:
+    reader = json.load(r)
+    for row in reader:
+        print(row)
