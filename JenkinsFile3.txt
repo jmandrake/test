@@ -12,20 +12,10 @@ pipeline {
 				}
 			}
 			stage('Three'){
-				when {
-					not {
-						branch "main"
-					}
-					steps {
-						echo "Hello this is step Three"
-					}
-				}
-			}
-			stage('Four'){
 				parallel {
 					stage('Unit Test'){
 						steps {
-							echo "Running Unit Tests..."
+							echo 'Running Unit Tests...'
 						}
 					}
 					stage('Integration test'){
@@ -43,6 +33,4 @@ pipeline {
 			}
 		
 		}
-
-
 }
