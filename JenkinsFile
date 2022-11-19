@@ -21,26 +21,6 @@ pipeline {
 					}
 				}
 			}
-			stage('Four'){
-				parallel {
-					stage('Unit Test'){
-						steps {
-							echo "Running Unit Tests..."
-						}
-					}
-					stage('Integration test'){
-						agent {
-							docker {
-								reuseNoe false
-								image 'unbutu'
-							}
-						}
-						steps {
-							echo 'Running the integraion step from stage Four'
-						}
-					}
-				}
-			}
 		
 		}
 
